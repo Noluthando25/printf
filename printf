@@ -30,11 +30,7 @@ int _printf(const char *format, ...)
                     count += printf("%s", va_arg(list, char *));
                     break;
                 case '%':
-                    count += putchar('%');
-                    break;
-                default:
-                    count += putchar('%');
-                    count += putchar(*format);
+                    count += printf("%");
                     break;
             }
         }
