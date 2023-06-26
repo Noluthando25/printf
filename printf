@@ -10,18 +10,18 @@
 
 int _printf(const char *format, ...)
 {
-    va_list list;
-    va_start(list, format);
+va_list list;
 
-    int count = 0;
+va_start(list, format);
 
-    while (*format != '\0')
-    {
-        if (*format == '%')
-        {
-            format++;
+int count = 0;
 
-            switch (*format)
+while (*format != '\0')
+{
+if (*format == '%')
+{
+format++;
+switch (*format)
             {
                 case 'c':
                     count += printf("%c", va_arg(list, int));
@@ -32,11 +32,15 @@ int _printf(const char *format, ...)
                 case '%':
                     count += printf("%");
                     break;
+                default:
+                    count += printf("%");
+                    count += printf("char format");
+                    break;
             }
         }
         else
         {
-            count += putchar(*format);
+            count += printf("char format");
         }
 
         format++;
